@@ -61,6 +61,10 @@ const cursos = [
 
 const container = document.getElementById('malla-container');
 
+function tieneDependientes(curso) {
+  return cursos.some(c => c.prerequisitos.includes(curso.nombre));
+}
+
 function renderMalla() {
   container.innerHTML = '';
   const porSemestre = {};
@@ -80,8 +84,22 @@ function renderMalla() {
         return prCurso && prCurso.aprobado;
       });
 
+      const dependientes = tieneDependientes(curso);
+
+      let color = '#A4C8E1'; // default bloqueado
+      if (curso.aprobado) {
+        color = '#d8e2dc'; // curso terminado
+      } else if (prereqsOk) {
+        color = '#adc178'; // curso desbloqueado
+      } else if (!dependientes) {
+        color = '#d8e2dc'; // curso aislado sin dependientes
+      }
+
       const div = document.createElement('div');
-      div.className = `curso ${curso.aprobado ? 'aprobado' : ''} ${curso.tipo || ''}`;
+      div.className = `curso ${curso.aprobado ? 'aprobado' : ''}`;
+      div.style.backgroundColor = color;
+      div.style.borderLeft = `6px solid ${color}`;
+
       div.innerHTML = `
         <strong>${curso.nombre}</strong><br>
         <small>${curso.creditos} créditos${curso.prerequisitos.length ? ' | Prerreq: ' + curso.prerequisitos.join(', ') : ''}</small><br>
