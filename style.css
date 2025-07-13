@@ -2,23 +2,15 @@
 
 body {
   font-family: 'Nunito', sans-serif;
-  background-color: #f4f6f8;
+  background: #f4f6f8;
   margin: 0;
   padding: 0;
 }
 
-h1 {
-  text-align: center;
-  font-family: 'Pacifico', cursive;
-  color: #1a237e;
-  margin-top: 1rem;
-}
-
-h2 {
+h1, h2 {
   font-family: 'Pacifico', cursive;
   text-align: center;
   color: #1a237e;
-  margin-bottom: 1rem;
 }
 
 #malla-container {
@@ -26,52 +18,30 @@ h2 {
   overflow-x: auto;
   padding: 2rem;
   gap: 2rem;
-  scroll-behavior: smooth;
 }
 
-/* Contenedor por semestre */
 .semestre {
   min-width: 280px;
-  background-color: #fff;
+  background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   flex-shrink: 0;
 }
 
-/* Tarjetas de curso */
 .curso {
-  background-color: #e3eaf1;
-  border-left: 8px solid #90caf9;
   border-radius: 8px;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 14px;
 }
 
-/* Estados aprobados */
 .curso.aprobado {
-  opacity: 0.6;
   text-decoration: line-through;
+  opacity: 0.5;
 }
 
-/* Colores por tipo */
-.curso.matematicas {
-  background-color: #d0ebff;
-  border-left-color: #1e88e5;
-}
-
-.curso.economia {
-  background-color: #d0f5d8;
-  border-left-color: #43a047;
-}
-
-.curso.internacional {
-  background-color: #fcdde4;
-  border-left-color: #ec407a;
-}
-
-/* Checkbox y textos */
 label {
   display: block;
   margin-top: 0.5rem;
